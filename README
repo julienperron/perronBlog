@@ -1,0 +1,65 @@
+LISEZ-MOI Moteur Blog Perron
+Dernière mise à jour: 17/02/2016
+------------------------------------------------------------------------
+
+
+Table des matières
+------------------
+1) Contexte Blog côté Utilisateur
+2) Articles
+3) Moteur de recherche
+4) Inscription
+5) Contexte Blog côté Administrateur
+6) Ajouter un article
+7) Modifier un article
+8) Supprimer un article
+9) Déconnexion
+
+
+1) Contexte Blog côté Utilisateur
+---- -----------------------------
+Dans ce blog, l'utilisateur peut visualiser différents articles. Il peut faire une recherche précise grâce au moteur de recherche situé dans le menu.
+L'utilisateur peut s'inscrire sur le blog via le menu pour pouvoir se connecter ensuite et devenir un administrateur.
+
+
+2) Articles
+---- -------
+Les articles sont composés de quatre éléments. Il y a le titre, le contenu, l'image associée à l'article et la date où l'article a été ajouté.
+
+
+3) Moteur de recherche
+---- ------------------
+Le moteur de recherche permet de rechercher un article avec plusieurs mots clés différents, on accède à ce moteur via le menu du blog. Lorque par exemple on met deux mots à la suite, ceci affichera les articles qui ont ces mots dans leurs contenu. Par contre entre deux mots si il y a plusieurs espaces, la recherche ne fonctionnera pas.
+
+
+4) Inscription
+---- ----------
+On accède à la page d'inscription via le menu du blog. 
+L'inscription est composée de quatre éléments (quatre champs). Il y a le nom, le prénom, l'email de l'utilisateur, et le mot de passe.
+En s'inscrivant cela permet de pouvoir se connecter au blog et de devenir administrateur.
+
+
+5) Contexte Blog côté Administrateur
+---- --------------------------------
+En étant connecté on devient administrateur, on peut alors ajouter, modifier ou supprimer un article grâce à des boutons qui s'afficheront en dessous de l'article concerné.
+
+
+6) Ajouter un article
+---- -----------------
+On accède à la page pour rédiger un article via le menu du blog. 
+Pour rédiger un article il faut entrer son titre, son contenu et ensuite sélectionner l'image qui sera associé à l'article. 
+
+
+7) Modifier un article
+---- ------------------
+On accède à la page pour modifier un article via le bouton 'modifier' situé en dessous de l'article concerné qui a apparu lorsqu'on s'est connecté. 
+Lorsqu'on modifie un article, son titre, son contenu, et son image est déjà remit dans les champs respectives. Il suffit alors de changer les quelques lignes qu'on souhaîte modifier et de changer l'image si on le souhaîte.
+
+8) Supprimer un article
+---- -------------------
+On supprime un article via le bouton 'supprimer' situé à côté du bouton 'modifier'.
+Lorsqu'on clique sur ce bouton, on supprime tout simplement l'article.
+
+9) Déconnexion
+---- ----------
+On se déconnecte via le menu du blog. Ce bouton/lien est bien évidemment visible que lorsqu'on est connecté.
