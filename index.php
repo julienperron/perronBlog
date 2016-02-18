@@ -1,8 +1,8 @@
 ﻿<?php 
 
-	include('includes/connexion.inc.php'); //connexion
+	include('includes/connexion.inc.php'); // Connexion
 	
-	include('includes/header.inc.php'); //en tête de la page
+	include('includes/header.inc.php'); // En tête de la page
 	
 	include('includes/verif_util.inc.php'); //vérifie si l'utilisateur est connecté
 	
