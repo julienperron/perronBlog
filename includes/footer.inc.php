@@ -21,6 +21,7 @@
 					</tr> 
 				</table>
 				<input type="button" id="boutonNewsletter" name="boutonNewsletter" value="Newsletter" class="btn btn-primary"/>
+				<label id="retour"></label></br>
 				<?php
 					}
 					else
@@ -80,14 +81,13 @@
     <script type="text/javascript">
     		$("#boutonNewsletter").click(function(e)
 	        {
-		        e.preventDefault();
 		        $.ajax(
 		        	{
 		        		type: "GET",
 		                url: "newsletter.php",
 		                data: 'email=' + $("#newsletter").val(), 
 		                success: function(response){  //fonction qui permet d'afficher la réponse du fichier newsletter (KO,OK,Déjà abonné)
-		                	alert(response);
+		                	$("#retour").text(response);
 		                }
 		    		});
 		        $("#newsletter").val(''); //efface le text du champ newsletter lorsqu'on clic sur le bouton
