@@ -15,13 +15,16 @@
 				?>
 				<li><a href="article.php">Rédiger un article</a></li>
 				<li><a href="deconnexion.php">Déconnexion</a></li></br>
+				    <div id="openModal" class="alert">
+      					<button type="button" class="close" id="close" data-dismiss="alert">&times;</button>
+      					<span id="retour"></span>
+    				</div>
 				<table>
 					<tr>
 						<td><input class="input" placeholder="Email" type="email" name="newsletter" id="newsletter"/></td>
 					</tr> 
 				</table>
 				<input type="button" id="boutonNewsletter" name="boutonNewsletter" value="Newsletter" class="btn btn-primary"/>
-				<label id="retour"></label></br>
 				<?php
 					}
 					else
@@ -60,7 +63,7 @@
 
 		$(document).ready(function()
 		{
-        	$('ul').hide(); //De base, on fait disparaitre le menu
+        	/*$('ul').hide(); //De base, on fait disparaitre le menu
         	
         	$('.span4').hover( 
 				
@@ -73,7 +76,8 @@
                {
             		$('ul').slideUp(150); //disparait lorsqu'on n'est plus sur le menu
                }
-            );
+            );*/
+            $('#openModal').slideUp();
         });
 
     </script>
@@ -88,10 +92,61 @@
 		                data: 'email=' + $("#newsletter").val(), 
 		                success: function(response){  //fonction qui permet d'afficher la réponse du fichier newsletter (KO,OK,Déjà abonné)
 		                	$("#retour").text(response);
+							$('#openModal').slideDown();
+							$('#openModal').removeClass();
+							if(response=="Vous êtes abonné !")
+							{
+								$('#openModal').addClass("alert alert-success");
+							}
+							else if(response=="Vous êtes déjà abonné !")
+							{
+								$('#openModal').addClass("alert alert-info");								
+							}
+							else
+							{
+								$('#openModal').addClass("alert alert-error");
+							}
 		                }
 		    		});
 		        $("#newsletter").val(''); //efface le text du champ newsletter lorsqu'on clic sur le bouton
 		    });
+
+			$('#newsletter').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    $.ajax(
+		        	{
+		        		type: "GET",
+		                url: "newsletter.php",
+		                data: 'email=' + $("#newsletter").val(), 
+		                success: function(response){  //fonction qui permet d'afficher la réponse du fichier newsletter (KO,OK,Déjà abonné)
+		                	$("#retour").text(response);
+		                	$('#openModal').slideDown();
+		                	$('#openModal').removeClass();
+							if(response=="Vous êtes abonné !")
+							{
+								$('#openModal').addClass("alert alert-success");
+							}
+							else if(response=="Vous êtes déjà abonné !")
+							{
+								$('#openModal').addClass("alert alert-info");								
+							}
+							else
+							{
+								$('#openModal').addClass("alert alert-error");
+							}
+		                }
+		    		});
+		        	$("#newsletter").val(''); //efface le text du champ newsletter lorsqu'on clic sur le bouton
+                }
+                event.stopPropagation();
+            });
+
+            $("#close").click(function(e)
+	        {
+		        $('#openModal').slideUp();
+		    });
+
     </script>
 
   </body>
