@@ -61,16 +61,16 @@
 		{
         	$('ul').hide(); //De base, on fait disparaitre le menu
         	
-        	$('.span4').hover(
+        	$('.span4').hover( 
 				
                function () 
                {
-                  	$('ul').slideDown(150);
+                  	$('ul').slideDown(150); //apparait lorsqu'on passe sur le menu
                }, 
 				
                function () 
                {
-            		$('ul').slideUp(150);
+            		$('ul').slideUp(150); //disparait lorsqu'on n'est plus sur le menu
                }
             );
         });
@@ -85,12 +85,12 @@
 		        	{
 		        		type: "GET",
 		                url: "newsletter.php",
-		                data: 'email=' + $("#newsletter").val(),
-		                success: function(response){
+		                data: 'email=' + $("#newsletter").val(), 
+		                success: function(response){  //fonction qui permet d'afficher la réponse du fichier newsletter (KO,OK,Déjà abonné)
 		                	alert(response);
 		                }
 		    		});
-		        $("#newsletter").val('');
+		        $("#newsletter").val(''); //efface le text du champ newsletter lorsqu'on clic sur le bouton
 		    });
     </script>
 
