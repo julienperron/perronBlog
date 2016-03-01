@@ -63,7 +63,7 @@
 
 		$(document).ready(function()
 		{
-        	/*$('ul').hide(); //De base, on fait disparaitre le menu
+        	$('ul').hide(); //De base, on fait disparaitre le menu
         	
         	$('.span4').hover( 
 				
@@ -76,8 +76,9 @@
                {
             		$('ul').slideUp(150); //disparait lorsqu'on n'est plus sur le menu
                }
-            );*/
-            $('#openModal').slideUp();
+            );
+
+            $('#openModal').slideUp(); //de base, on fait disparaitre l'alerte du newsletter
         });
 
     </script>
@@ -91,29 +92,29 @@
 		                url: "newsletter.php",
 		                data: 'email=' + $("#newsletter").val(), 
 		                success: function(response){  //fonction qui permet d'afficher la réponse du fichier newsletter (KO,OK,Déjà abonné)
-		                	$("#retour").text(response);
-							$('#openModal').slideDown();
-							$('#openModal').removeClass();
-							if(response=="Vous êtes abonné !")
+		                	$("#retour").text(response); //on rempli le texte du span de l'erreur
+							$('#openModal').removeClass(); //on efface toute les classes de l'alerte
+							$('#openModal').slideDown(); //on affiche l'alerte
+							if(response=="Vous êtes abonné !") //si on est abonné
 							{
-								$('#openModal').addClass("alert alert-success");
+								$('#openModal').addClass("alert alert-success"); //alors on ajoute la classe success (vert)
 							}
-							else if(response=="Vous êtes déjà abonné !")
+							else if(response=="Vous êtes déjà abonné !") //si on est déjà abonné
 							{
-								$('#openModal').addClass("alert alert-info");								
+								$('#openModal').addClass("alert alert-info");//alors on ajoute la classe info (bleu)						
 							}
 							else
 							{
-								$('#openModal').addClass("alert alert-error");
+								$('#openModal').addClass("alert alert-error"); //sinon on ajoute la classe error (rouge) dans les autres cas
 							}
 		                }
 		    		});
 		        $("#newsletter").val(''); //efface le text du champ newsletter lorsqu'on clic sur le bouton
 		    });
 
-			$('#newsletter').keypress(function(event){
+			$('#newsletter').keypress(function(event){ //si il appuie sur la touche entrer
                 var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
+                if(keycode == '13'){ //le numéro 13 signifie la touche entrer
                     $.ajax(
 		        	{
 		        		type: "GET",
@@ -142,9 +143,9 @@
                 event.stopPropagation();
             });
 
-            $("#close").click(function(e)
+            $("#close").click(function(e) //lorsqu"on clique sur la croix de l'alerte
 	        {
-		        $('#openModal').slideUp();
+		        $('#openModal').slideUp(); //on efface l'alerte
 		    });
 
     </script>
