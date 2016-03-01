@@ -1,5 +1,6 @@
 		<!-- PIED DE PAGE -->
-		
+		<script src="assets/js/jquery-1.8.2.js"></script>
+
 		</div>          
           <nav class="span4">
             <h2>Menu</h2>
@@ -14,6 +15,12 @@
 				?>
 				<li><a href="article.php">Rédiger un article</a></li>
 				<li><a href="deconnexion.php">Déconnexion</a></li></br>
+				<table>
+					<tr>
+						<td><input class="input" placeholder="Email" type="email" name="newsletter" id="newsletter"/></td>
+					</tr> 
+				</table>
+				<input type="button" id="boutonNewsletter" name="boutonNewsletter" value="Newsletter" class="btn btn-primary"/>
 				<?php
 					}
 					else
@@ -47,6 +54,45 @@
       </footer>
 
     </div>
+
+    <script text="text/javascript">
+
+		$(document).ready(function()
+		{
+        	$('ul').hide(); //De base, on fait disparaitre le menu
+        	
+        	$('.span4').hover(
+				
+               function () 
+               {
+                  	$('ul').slideDown(150);
+               }, 
+				
+               function () 
+               {
+            		$('ul').slideUp(150);
+               }
+            );
+        });
+
+    </script>
+
+    <script type="text/javascript">
+    		$("#boutonNewsletter").click(function(e)
+	        {
+		        e.preventDefault();
+		        $.ajax(
+		        	{
+		        		type: "GET",
+		                url: "newsletter.php",
+		                data: 'email=' + $("#newsletter").val(),
+		                success: function(response){
+		                	alert(response);
+		                }
+		    		});
+		        $("#newsletter").val('');
+		    });
+    </script>
 
   </body>
 </html>
