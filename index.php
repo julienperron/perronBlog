@@ -1,11 +1,12 @@
 ﻿<?php 
 
-	include('includes/connexion.inc.php'); // Connexion
+	include('includes/connexion.inc.php'); //connexion
 	
-	include('includes/header.inc.php'); // En tête de la page
+	include('includes/header.inc.php'); //en tête de la page
 	
 	include('includes/verif_util.inc.php'); //vérifie si l'utilisateur est connecté
-	
+
+	include('slider.php');
     //--------- CONTENU ---------
 
 	if((isset($_POST['champSearch']))) //si il utilise sur le moteur de recherche
@@ -37,6 +38,7 @@
 	while($data = mysql_fetch_array($res))
 	{
 		$id = $data['id']; //id de l'article
+		$votes = $data['votes'];
 		echo '<h3>'.$data['titre'].'</h3>'; //titre de l'article
 		
 		$imageFile = dirname(__FILE__).'/assets/images/'.$id.'.jpg'; //chemin de l'image
@@ -56,6 +58,15 @@
 				
 			<?php
 		}
+
+		$sonIp = $_SERVER['REMOTE_ADDR'];
+
+		if($data['derniereIp'] != $sonIp)
+		{
+			echo "<input style='float:right' type='button' id='boutonVote' name='boutonVote' value='J'aime' class='btn btn-primary' onClick='vote($id)'/>";
+		}
+		echo "<p>il y a $votes votes !</p>";
+	
 		echo '<div style="clear:both;"></div>';
 		echo '<HR>';
 	}
@@ -63,3 +74,17 @@
 		include('includes/footer.inc.php'); //pied de page
 	
 ?>
+
+<script type="text/javascript">
+	function vote(id)
+    {
+        $.ajax(
+        	{
+        		type: "GET",
+                url: "voter_article.php",
+                data: 'id=' + id
+    		});
+
+        $("#boutonVote").hide();
+    }
+</script>
